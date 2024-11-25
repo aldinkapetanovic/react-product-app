@@ -1,6 +1,12 @@
 # Use the official Maven image as the base image
 FROM maven:3.8.4-openjdk-17 AS build
 
+
+ENV SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/product
+ENV SPRING_DATASOURCE_USERNAME=product_user
+ENV SPRING_DATASOURCE_PASSWORD=product_user_password
+
+
 # Set the working directory
 WORKDIR /app
 

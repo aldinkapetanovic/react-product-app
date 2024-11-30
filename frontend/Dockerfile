@@ -1,5 +1,5 @@
 # Build stage
-FROM node:18 AS build
+FROM node:latest AS build
 
 WORKDIR /app
 
@@ -16,7 +16,7 @@ COPY . .
 RUN npm run build
 
 # Serve stage
-FROM nginx:1.25.1
+FROM nginx:latest
 
 # Copy the custom nginx.conf file to the container
 COPY .docker/nginx.conf /etc/nginx/nginx.conf

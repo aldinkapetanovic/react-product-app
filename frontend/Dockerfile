@@ -4,16 +4,18 @@ FROM node:latest AS build
 WORKDIR /app
 
 # Copy package.json and package-lock.json to the container
-COPY package*.json ./
+COPY package.json ./
+
+COPY yarn.lock ./
 
 # Install dependencies
-RUN npm install
+RUN yarn
 
 # Copy the rest of the application code
 COPY . .
 
 # Build the React app
-RUN npm run build
+RUN yarn build
 
 # Serve stage
 FROM nginx:latest
